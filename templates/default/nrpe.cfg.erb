@@ -1,0 +1,68 @@
+# This file is maintained by Chef
+# Do NOT modify it.
+
+# LOG FACILITY
+log_facility=daemon
+
+# PID FILE
+pid_file=/var/run/nrpe/nrpe.pid
+
+# PORT NUMBER
+server_port=5666
+
+# SERVER ADDRESS
+server_address=<%= node[:ipaddress] %>
+
+# NRPE USER
+nrpe_user=nrpe
+
+# NRPE GROUP
+nrpe_group=nrpe
+
+# ALLOWED HOST ADDRESSES
+allowed_hosts=192.168.2.120
+
+# COMMAND ARGUMENT PROCESSING
+# *** ENABLING THIS OPTION IS A SECURITY RISK! ***
+# Read the SECURITY file for information on some of the security implications
+# of enabling this variable.
+# Values: 0=do not allow arguments, 1=allow command arguments
+dont_blame_nrpe=0
+
+# BASH COMMAND SUBTITUTION
+# *** ENABLING THIS OPTION IS A HIGH SECURITY RISK! ***
+# Read the SECURITY file for information on some of the security implications
+# of enabling this variable.
+# Values: 0=do not allow bash command substitutions,
+#         1=allow bash command substitutions
+allow_bash_command_substitution=0
+
+# DEBUGGING OPTION
+debug=0
+
+# COMMAND TIMEOUT
+command_timeout=60
+
+# CONNECTION TIMEOUT
+connection_timeout=300
+
+# INCLUDE CONFIG FILE
+#include=nrpe-addons.cfg
+
+# COMMAND DEFINITIONS
+# The following examples use hardcoded command arguments...
+command[check_users]=/usr/lib64/nagios/plugins/check_users -w 5 -c 10
+command[check_load]=/usr/lib64/nagios/plugins/check_load -w 15,10,5 -c 30,25,20
+command[check_sda1]=/usr/lib64/nagios/plugins/check_disk -w 20% -c 10% -p /dev/sda1
+command[check_zombie_procs]=/usr/lib64/nagios/plugins/check_procs -w 5 -c 10 -s Z
+command[check_total_procs]=/usr/lib64/nagios/plugins/check_procs -w 150 -c 200
+
+#command[check_users]=/usr/lib64/nagios/plugins/check_users -w $ARG1$ -c $ARG2$
+#command[check_load]=/usr/lib64/nagios/plugins/check_load -w $ARG1$ -c $ARG2$
+#command[check_disk]=/usr/lib64/nagios/plugins/check_disk -w $ARG1$ -c $ARG2$ -p $ARG3$
+#command[check_procs]=/usr/lib64/nagios/plugins/check_procs -w $ARG1$ -c $ARG2$ -s $ARG3$
+
+# INCLUDE CONFIG DIRECTORY
+include_dir=/etc/nrpe.d/
+
+
